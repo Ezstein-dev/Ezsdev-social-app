@@ -1,0 +1,38 @@
+<!-- profile.html -->
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+<h2>{{ profile.user.username }}'s profile</h2>
+<div class="profile-info">
+    <div class="profile-image">
+        <img src="{{ profile.profile_img.url }}" alt="Profile Image">
+    </div>
+    <div class="profile-details">
+        <p>Bio: {{ profile.bio }}</p>
+        <p>Gender: {% if profile.is_male %}Male{% else %}Female{% endif %}</p>
+    </div>
+</div>
+<h2>Posts</h2>
+<div class="posts">
+    {% for post in posts %}
+    <div class="post">
+        <h3>{{ post.author.username }}</h3>
+        <p>{{ post.post_text }}</p>
+        {% if post.post_image %}
+        <img src="{{ post.post_image.url }}" alt="Post Image">
+        {% endif %}
+        {% if post.post_video %}
+        <video controls>
+            <source src="{{ post.post_video.url }}" type="video/mp4">
+        </video>
+        {% endif %}
+        <p>Created at: {{ post.created_at }}</p>
+        <a href="{% url 'post_detail' post_id=post.id %}">View post</a>
+    </div>
+    {% empty %}
+    <p>No posts found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

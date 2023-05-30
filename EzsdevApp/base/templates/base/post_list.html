@@ -1,0 +1,24 @@
+<!-- profile.html -->
+{% extends 'base/main.html' %}
+{% block content %}
+<h2>Posts</h2>
+{% for post in posts %}
+<div class="post">
+    <h3>{{ post.author.username }}</h3>
+    <p>{{ post.post_text }}</p>
+    {% if post.post_image %}
+    <img src="{{ post.post_image.url }}" alt="Post Image">
+    {% endif %}
+    {% if post.post_video %}
+    <video controls>
+        <source src="{{ post.post_video.url }}" type="video/mp4">
+    </video>
+    {% endif %}
+    <p>Created at: {{ post.created_at }}</p>
+    <p>Likes: {{ post.vote_set.count }}</p>
+</div>
+{% empty %}
+<p>No posts available.</p>
+{% endfor %}
+{% endblock %}
+

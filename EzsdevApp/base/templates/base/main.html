@@ -1,0 +1,39 @@
+<!-- main.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Social Media App</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Welcome, {{ user.username }}</h1>
+            <ul>
+                <li><a href="{% url 'posts' %}">Home</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </div>
+        <div class="header-right">
+            <h2>Who to Follow:</h2>
+            <!-- Add recommended users or other content -->
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Social Media App. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

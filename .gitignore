@@ -1,0 +1,18 @@
+# Ignore virtual environment files
+/venv/
+
+# Ignore Django-related files
+__pycache__/
+
+# Ignore database files
+db.sqlite3
+*.sqlite3
+
+# Ignore media and static files (if not using a separate storage solution)
+media/
+static/
+
+
+# Ignore IDE-specific files
+.vscode/
+
