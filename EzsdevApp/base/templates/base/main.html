@@ -11,19 +11,15 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="header-left">
             <h1>Welcome, {{ user.username }}</h1>
             <ul>
-                <li><a href="{% url 'posts' %}">Home</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'posts' %}">&#x1F3E0; Home</a></li>
+                <li><a href="{% url 'profile' %}">&#x1F464; Profile</a></li>
+                <li><a href="{% url 'logout' %}">&#x1F6AA; Logout</a></li>
                 <!-- Add more links as needed -->
             </ul>
-        </div>
-        <div class="header-right">
-            <h2>Who to Follow:</h2>
-            <!-- Add recommended users or other content -->
         </div>
     </header>
 
@@ -32,7 +28,16 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Social Media App. All rights reserved.</p>
+        <div class="footer-right">
+            <h2>Who to Follow:</h2>
+            <ul>
+                {% for user in Users %}
+                <li><a href="{% url 'follow_user' username=follow.user.username %}">&#x1F464; {user.username}</a></li>
+                <!-- Add recommended users or other content -->
+                {% endfor %}
+            </ul>
+            <p>&copy; 2023 Social Media App. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 
